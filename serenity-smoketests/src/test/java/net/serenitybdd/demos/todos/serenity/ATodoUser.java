@@ -1,11 +1,13 @@
 package net.serenitybdd.demos.todos.serenity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Arrays;
+
 import net.serenitybdd.demos.todos.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.pages.ApplicationHomePage;
 import net.serenitybdd.demos.todos.pages.TodoPage;
 import net.thucydides.core.annotations.Step;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ATodoUser {
 
@@ -24,7 +26,7 @@ public class ATodoUser {
 
     @Step("Joe completed **many** tasks")
     public void has_added_actions_called(String... actionNames) {
-        newArrayList(actionNames).forEach(
+        Arrays.asList(actionNames).forEach(
                 action -> adds_an_action_called(action)
         );
     }

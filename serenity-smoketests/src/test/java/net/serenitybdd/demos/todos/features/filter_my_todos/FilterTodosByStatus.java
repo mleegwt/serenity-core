@@ -1,22 +1,30 @@
 package net.serenitybdd.demos.todos.features.filter_my_todos;
 
-import net.serenitybdd.demos.todos.tasks.*;
+import static net.serenitybdd.demos.todos.model.TodoStatusFilter.Active;
+import static net.serenitybdd.demos.todos.model.TodoStatusFilter.Completed;
+import static net.serenitybdd.screenplay.GivenWhenThen.andThat;
+import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.GivenWhenThen.then;
+import static net.serenitybdd.screenplay.GivenWhenThen.when;
+import static org.hamcrest.Matchers.contains;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
+
+import net.serenitybdd.demos.todos.tasks.AddItems;
+import net.serenitybdd.demos.todos.tasks.CompleteItem;
+import net.serenitybdd.demos.todos.tasks.DisplayedItems;
+import net.serenitybdd.demos.todos.tasks.FilterItems;
+import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.WithTag;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-
-import static net.serenitybdd.demos.todos.model.TodoStatusFilter.Active;
-import static net.serenitybdd.demos.todos.model.TodoStatusFilter.Completed;
-import static net.serenitybdd.screenplay.GivenWhenThen.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.contains;
 
 @RunWith(SerenityRunner.class)
 @WithTag("smoketest")

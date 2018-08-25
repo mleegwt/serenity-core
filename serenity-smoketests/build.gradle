@@ -54,8 +54,8 @@ dependencies {
     compile "net.serenity-bdd:serenity-core:$serenityCoreVersion"
     compile "net.serenity-bdd:serenity-junit:$serenityCoreVersion"
     compile("net.serenity-bdd:serenity-screenplay:$serenityCoreVersion")
-    compile("net.serenity-bdd:browse-the-web:$serenityCoreVersion")
-
+	compile("net.serenity-bdd:serenity-screenplay-webdriver:$serenityCoreVersion")
+	
     compile 'org.slf4j:slf4j-simple:1.7.7'
     compile 'org.codehaus.groovy:groovy-all:2.4.11'
     compile 'junit:junit:4.12'
@@ -75,7 +75,7 @@ test {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.10'
+    gradleVersion = '4.9'
 }
 
 task copyDeps(type: Copy) {

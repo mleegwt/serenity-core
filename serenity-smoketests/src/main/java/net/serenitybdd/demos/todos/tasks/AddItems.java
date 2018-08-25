@@ -1,12 +1,14 @@
 package net.serenitybdd.demos.todos.tasks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import net.serenitybdd.demos.todos.pages.ApplicationHomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Step;
-
-import java.util.List;
 
 public class AddItems implements Performable {
 
@@ -26,7 +28,7 @@ public class AddItems implements Performable {
     }
 
     public AddItems called(String... thingsToDo) {
-        return called(new ArrayList<>(thingsToDo));
+        return called(Arrays.asList(thingsToDo));
     }
 
 }
