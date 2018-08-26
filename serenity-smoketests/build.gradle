@@ -13,6 +13,7 @@ buildscript {
         classpath 'org.pegdown:pegdown:1.4.1'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.11.3'
         classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.36")
+        classpath "com.avast.gradle:gradle-docker-compose-plugin:0.8.4"
     }
 }
 
@@ -46,7 +47,7 @@ ext {
 apply plugin: "java"
 apply plugin: "eclipse"
 apply plugin: "net.serenity-bdd.aggregator"
-
+apply plugin: "docker-compose"
 
 println "serenityCoreVersion= $serenityCoreVersion"
 
@@ -63,6 +64,11 @@ dependencies {
     compile 'org.hamcrest:hamcrest-all:1.3'
 }
 
+tasks.withType(Test){
+    testLogging.showStandardStreams = true
+    systemProperty 'webdriver.remote.url', 'http://localhost:4444/wd/hub'
+    systemProperty 'webdriver.remote.driver', 'chrome'
+}
 
 test {
     testLogging {
@@ -82,3 +88,6 @@ task copyDeps(type: Copy) {
     from configurations.runtime + configurations.testCompile
     into project.projectDir.path + "/lib"
 }
+
+test.finalizedBy(aggregate)
+dockerCompose.isRequiredBy(test)
